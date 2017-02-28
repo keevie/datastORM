@@ -12,14 +12,12 @@ class SQLObject
   end
 
   def self.columns
-
     @columns ||= DBConnection.execute2("SELECT * FROM #{table_name}")
       .first.map(&:to_sym)
   end
 
   def self.finalize!
     columns.each do |name|
-
       define_method("#{name}") do
         attributes[name]
       end
@@ -27,7 +25,6 @@ class SQLObject
       define_method("#{name}=") do |arg|
         attributes[name] = arg
       end
-
     end
   end
 
@@ -43,11 +40,13 @@ class SQLObject
     results.each do |result|
       objects << self.new(result)
     end
+
     objects
   end
 
   def self.find(id)
     result = DBConnection.execute("SELECT * FROM #{table_name} WHERE id = #{id}")
+
     return nil if result.empty?
     self.new(result.first)
   end
@@ -55,7 +54,9 @@ class SQLObject
   def initialize(params = {})
     params.each do |attr_name, val|
       attr_name = attr_name.to_sym
-      raise "unknown attribute '#{attr_name}'" unless self.class.columns.include?(attr_name)
+      unless self.class.columns.include?(attr_name)
+        raise "unknown attribute '#{attr_name}'"
+      end
 
       self.send("#{attr_name}=", val)
     end
