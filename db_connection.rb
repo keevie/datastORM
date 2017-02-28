@@ -2,7 +2,7 @@ require 'sqlite3'
 
 PRINT_QUERIES = ENV['PRINT_QUERIES'] == 'true'
 
-ROOT_FOLDER = File.join(File.dirname(__FILE__), '.')
+ROOT_FOLDER = File.join(File.dirname(__FILE__), '')
 CHICKENS_SQL_FILE = File.join(ROOT_FOLDER, 'chickens.sql')
 CHICKENS_DB_FILE = File.join(ROOT_FOLDER, 'chickens.db')
 

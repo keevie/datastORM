@@ -5,7 +5,7 @@ class BelongsToOptions < AssocOptions
     defaults = {
       foreign_key: "#{name}_id".to_sym,
       class_name: :name.to_s.camelcase,
-      primary_kay: :id
+      primary_key: :id
     }
 
     defaults.keys.each do |key|
