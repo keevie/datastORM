@@ -1,6 +1,7 @@
 require_relative 'db_connection'
-require_relative '01_sql_object'
+require_relative 'sql_object'
 require 'byebug'
+
 module Searchable
   def where(params)
 
@@ -10,24 +11,21 @@ module Searchable
     end
     where_str = where_arr.join(' AND ')
 
-    data = DBConnection.execute(<<-SQL)
+    data = DBConnection.execute(<<-SQL, *params.values)
       SELECT
         *
       FROM
-        #{self.table_name}
+        #{table_name}
       WHERE
        #{where_str}
     SQL
 
-  self.parse_all(data)
-  
+    parse_all(data)
   end
 end
 
+
+
 class SQLObject
-  # Mixin Searchable here...
   extend Searchable
-
-
-
 end

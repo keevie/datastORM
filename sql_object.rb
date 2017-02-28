@@ -77,8 +77,7 @@ class SQLObject
 
   def insert
     columns_str = self.class.columns.drop(1).join(',')
-    question_marks = ['?'] * (self.class.columns.count - 1)
-    question_marks = question_marks.join(',')
+    question_marks = ['?'] * (self.class.columns.count - 1).join(',')
 
     DBConnection.execute(<<-SQL, attribute_values)
       INSERT INTO
@@ -93,7 +92,6 @@ class SQLObject
   end
 
   def update
-
     columns_str = self.class.columns.join(" = ?,")
     columns_str << " = ?"
     item_id = attributes[:id]
