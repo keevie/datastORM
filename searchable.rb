@@ -9,6 +9,7 @@ module Searchable
     params.each do |attr_name, attr_value|
       where_arr << "#{attr_name} = '#{attr_value}'"
     end
+
     where_str = where_arr.join(' AND ')
 
     data = DBConnection.execute(<<-SQL, *params.values)
