@@ -12,7 +12,7 @@ module Searchable
 
     where_str = where_arr.join(' AND ')
 
-    data = DBConnection.execute(<<-SQL, *params.values)
+    data = DBConnection.execute(<<-SQL)
       SELECT
         *
       FROM

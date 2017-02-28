@@ -38,13 +38,6 @@ module Associatable
       source_options =
         through_options.model_class.assoc_options[source_name]
 
-      results = query_db_for_source_data(through_options, source_options)
-
-      source_options.model_class.parse_all(results).first
-    end
-  end
-
-  def query_db_for_source_data(through_options, source_options)
       through_table = through_options.table_name
       through_pk = through_options.primary_key
       through_fk = through_options.foreign_key
@@ -55,7 +48,7 @@ module Associatable
 
       key_val = self.send(through_fk)
 
-      return DBConnection.execute(<<-SQL, key_val)
+      results = DBConnection.execute(<<-SQL, key_val)
         SELECT
           #{source_table}.*
         FROM
@@ -68,6 +61,8 @@ module Associatable
           #{through_table}.#{through_pk} = ?
       SQL
 
+      source_options.model_class.parse_all(results).first
+    end
   end
 
   def assoc_options

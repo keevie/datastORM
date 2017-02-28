@@ -22,4 +22,16 @@ Chicken.belongs_to :owner,
   foreign_key: :owner_id,
   primary_key: :id
 
-Farmer.has_many :chickens
+Farmer.has_many :chickens,
+  class_name: 'Chicken',
+  foreign_key: :owner_id,
+  primary_key: :id
+
+Farmer.belongs_to :farm,
+  class_name: 'Farm',
+  foreign_key: :farm_id,
+  primary_key: :id
+
+Chicken.has_one_through :farm,
+   :owner,
+   :farm
