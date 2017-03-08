@@ -1,6 +1,6 @@
-require_relative 'db_connection';
-require_relative 'sql_object';
-require_relative 'associatable';
+require_relative '../lib/db_connection';
+require_relative '../lib/sql_object';
+require_relative '../lib/associatable';
 
 DBConnection.reset
 
@@ -35,3 +35,5 @@ Farmer.belongs_to :farm,
 Chicken.has_one_through :farm,
    :owner,
    :farm
+
+binding.pry
