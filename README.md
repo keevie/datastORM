@@ -1,5 +1,7 @@
 # datastORM - Create Ruby objects from database rows
 
+#### [Click here to try out datastORM](#demo)
+
 DatastORM connects Ruby classes to rows in a relational database table<sup>[1](#dbsupport)</sup>, allowing your apps to access and save persistent data with minimal configuration.
 
 The library provides a base class, SQLObject, which defines a relationship between the class and a table in the database. SQLObject can then be extended in order to provide access to the database for any class of your choosing: these classes are commonly referred to as models, and are the first part of the MVC (Model, View, Controller) pattern. Models in datastORM can be connected to other models using associations.
@@ -28,6 +30,15 @@ Methods are created for accessing each database row for the new objects: instanc
 
 Using the activesupport library from Rails, datastORM supports automatic table name detection: in the above example, datastORM knows without specifying that the `Chicken` class will corrospond to a `chickens` table.
 
+## Demo
+
+To try out datastORM, with a sample database, follow these instructions.
+
+Prerequisites: Ruby, bundler, sqlite3.
+
+1. Clone this repo.
+2. Run demo/demo.sh
+3. Try out some commands in the REPL! See below for some test possibilities---starting with Chicken.all is a good idea.
 
 ## Associations
 
