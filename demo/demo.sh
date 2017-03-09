@@ -1,3 +1,3 @@
 #!/bin/bash
 bundle install
-pry test.rb
+pry demo/test.rb
