@@ -37,7 +37,7 @@ To try out datastORM, with a sample database, follow these instructions.
 Prerequisites: Ruby, bundler, sqlite3.
 
 1. Clone this repo.
-2. Run demo/demo.sh
+2. Run ./demo/demo.sh
 3. Try out some commands in the REPL! See below for some test possibilities---starting with Chicken.all is a good idea.
 
 ## Associations
