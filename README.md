@@ -39,6 +39,7 @@ Prerequisites: Ruby, bundler, sqlite3.
 1. Clone this repo.
 2. Run ./demo/demo.sh
 3. Try out some commands in the REPL! See below for some test possibilities---starting with Chicken.all is a good idea.
+4. See [the docs](docs.md) for a full reference of available methods.
 
 ## Associations
 

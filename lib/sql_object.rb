@@ -75,6 +75,17 @@ class SQLObject
     values
   end
 
+  def save
+    if attributes[:id].nil?
+      insert
+    else
+      update
+    end
+    self
+  end
+
+  private
+
   def insert
     columns_str = self.class.columns.drop(1).join(',')
     question_marks = ['?'] * (self.class.columns.count - 1).join(',')
@@ -106,11 +117,4 @@ class SQLObject
     SQL
   end
 
-  def save
-    if attributes[:id].nil?
-      insert
-    else
-      update
-    end
-  end
 end
